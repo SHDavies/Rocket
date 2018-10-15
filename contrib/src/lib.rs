@@ -1,5 +1,3 @@
-#![feature(use_extern_macros)]
-
 // TODO: Version URLs.
 #![doc(html_root_url = "https://api.rocket.rs")]
 
@@ -47,7 +45,7 @@ extern crate serde;
 extern crate serde_json;
 
 #[cfg(feature = "json")]
-pub use serde_json::json_internal;
+pub use serde_json::{json_internal, json_internal_vec};
 
 #[cfg(feature = "json")]
 #[cfg_attr(feature = "json", macro_use)]

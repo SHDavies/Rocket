@@ -1,3 +1,35 @@
+# Version 0.3.17 (Sep 29, 2018)
+
+## Codegen
+
+  * Fixed an issue that prevented macros from expanding properly to routes.
+
+# Version 0.3.16 (Aug 24, 2018)
+
+## Codegen
+
+  * Codegen was updated for `2018-08-23` nightly.
+  * Minimum required `rustc` is `1.30.0-nightly 2018-08-23`.
+
+## Core
+
+  * Force close only the read end of connections. This allows responses to be
+    sent even when the client transmits more data than expected.
+
+## Docs
+
+  * Add details on retrieving configuration extras to guide.
+
+# Version 0.3.15 (Jul 16, 2018)
+
+## Codegen
+
+  * The `#[catch]` decorator and `catchers!` macro were introduced, replacing
+    `#[error]` and `errors!`.
+  * The `#[error]` decorator and `errors!` macro were deprecated.
+  * Codegen was updated for `2018-07-15` nightly.
+  * Minimum required `rustc` is `1.29.0-nightly 2018-07-15`.
+
 # Version 0.3.14 (Jun 22, 2018)
 
 ## Codegen

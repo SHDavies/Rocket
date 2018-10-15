@@ -3,12 +3,14 @@ mod arg_ext;
 mod parser_ext;
 mod ident_ext;
 mod span_ext;
+mod generics_ext;
 
 pub use self::arg_ext::ArgExt;
 pub use self::meta_item_ext::MetaItemExt;
 pub use self::parser_ext::ParserExt;
 pub use self::ident_ext::IdentExt;
 pub use self::span_ext::SpanExt;
+pub use self::generics_ext::GenericParamExt;
 
 use std::convert::AsRef;
 
@@ -17,7 +19,7 @@ use syntax::parse::token::Token;
 use syntax::tokenstream::TokenTree;
 use syntax::ast::{Item, Expr, Attribute, Ty};
 use syntax::ext::base::{Annotatable, ExtCtxt};
-use syntax::codemap::{Span, Spanned, DUMMY_SP};
+use syntax::source_map::{Span, Spanned, DUMMY_SP};
 use syntax::ext::quote::rt::ToTokens;
 use syntax::print::pprust::item_to_string;
 use syntax::symbol::{Ident, Symbol};
@@ -73,7 +75,7 @@ pub fn attach_and_emit(out: &mut Vec<Annotatable>, attr: Attribute, to: Annotata
 macro_rules! quote_enum {
     ($ecx:expr, $var:expr => $(::$root:ident)+
      { $($variant:ident),+ ; $($extra:pat => $result:expr),* }) => ({
-        use syntax::codemap::DUMMY_SP;
+        use syntax::source_map::DUMMY_SP;
         use syntax::ast::Ident;
         use $(::$root)+::*;
         let root_idents = vec![$(Ident::from_str(stringify!($root))),+];
